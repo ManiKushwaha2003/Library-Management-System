@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Users</h5>
+
+                <h2 id="totalUsers">0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Libraries</h5>
+
+                <h2 id="totalLibraries">0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Books</h5>
+
+                <h2 id="totalBooks">0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Issued Books</h5>
+
+                <h2 id="totalIssue">0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card mt-4">
+
+    <div class="card-header">
+
+        Welcome
+
+    </div>
+
+    <div class="card-body">
+
+        <h3>Library Management System</h3>
+
+        <p class="text-muted">
+
+            Manage Users, Libraries, Books, Book Issues and CSV Upload
+            from one dashboard.
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+const token = localStorage.getItem("access");
+
+if(!token){
+    location.href="/login/";
+}
+
+loadDashboard();
+
+async function loadDashboard(){
+
+    const headers={
+        Authorization:`Bearer ${token}`
+    };
+
+    try{
+
+        const users=await fetch("/api/accounts/users/",{headers});
+        const libraries=await fetch("/api/library/libraries/",{headers});
+        const books=await fetch("/api/library/books/",{headers});
+        const issues=await fetch("/api/library/bookissues/",{headers});
+
+        const userData=await users.json();
+        const libraryData=await libraries.json();
+        const bookData=await books.json();
+        const issueData=await issues.json();
+
+        document.getElementById("totalUsers").innerHTML=userData.count || userData.results.length;
+
+        document.getElementById("totalLibraries").innerHTML=libraryData.count || libraryData.results.length;
+
+        document.getElementById("totalBooks").innerHTML=bookData.count || bookData.results.length;
+
+        document.getElementById("totalIssue").innerHTML=issueData.length;
+
+    }
+    catch(error){
+        console.log(error);
+    }
+
+}
+
+</script>
+
+{% endblock %}

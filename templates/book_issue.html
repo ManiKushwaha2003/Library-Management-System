@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book Issue{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-header d-flex justify-content-between">
+
+        <h4>Book Issue</h4>
+
+            <button
+                class="btn btn-primary"
+                onclick="clearForm()"
+                data-bs-toggle="modal"
+                data-bs-target="#issueModal">
+
+                Issue Book
+
+            </button>
+
+    </div>
+
+    <div class="card-body">
+
+        <input type="text"
+               id="search"
+               class="form-control mb-3"
+               placeholder="Search...">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Book</th>
+                    <th>Due Date</th>
+                    <th width="180">Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="issueTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade"
+     id="issueModal">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Issue Book</h5>
+
+<button class="btn-close"
+data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<input type="hidden"
+id="issueId">
+
+<div class="mb-3">
+
+<label>User</label>
+
+<select id="user"
+class="form-select">
+
+<option value="">
+Select User
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Book</label>
+
+<select id="book"
+class="form-select">
+
+<option value="">
+Select Book
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Due Date</label>
+
+<input
+type="date"
+id="due_date"
+class="form-control">
+
+</div>
+
+<button
+class="btn btn-success"
+onclick="saveIssue()">
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'js/issue.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+
+{% extends "user/user_base.html" %}
+{% load static %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h4>Edit Profile</h4>
+    </div>
+
+    <div class="card-body">
+
+        <input type="text" id="username" class="form-control mb-3">
+
+        <input type="email" id="email" class="form-control mb-3">
+
+        <input type="text" id="firstName" class="form-control mb-3">
+
+        <input type="text" id="lastName" class="form-control mb-3">
+
+        <button
+            type="button"
+            onclick="updateProfile()"
+            class="btn btn-success">
+            Update
+        </button>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/user/edit_profile.js' %}"></script>
+{% endblock %}
+

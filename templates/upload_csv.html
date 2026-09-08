@@ -1,0 +1,55 @@
+{% comment %} {% extends "base.html" %}
+{% load static %}
+
+{% block title %}CSV Upload{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h4>Upload Books CSV</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div id="msg"></div>
+
+        <form id="uploadForm">
+
+            <div class="mb-3">
+
+                <label>Select CSV File</label>
+
+                <input
+                    type="file"
+                    id="csvFile"
+                    class="form-control"
+                    accept=".csv"
+                    required>
+
+            </div>
+
+            <button
+                class="btn btn-success"
+                type="submit">
+
+                Upload CSV
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'js/upload.js' %}"></script>
+
+{% endblock %} {% endcomment %}

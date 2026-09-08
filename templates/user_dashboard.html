@@ -1,0 +1,151 @@
+{% extends "base_user.html" %}
+{% load static %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row mb-4">
+
+    <div class="col-md-12">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body">
+
+                <h3 id="welcomeUser">
+                    Welcome
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Select a library to view and issue available books.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow h-100">
+
+            <div class="card-body">
+
+                <label class="form-label fw-bold">
+                    Select Library
+                </label>
+
+                <select
+                    id="library"
+                    class="form-select"
+                    onchange="loadBooksByLibrary()">
+
+                    <option value="">
+                        Select Library
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow text-center h-100">
+
+            <div class="card-body">
+
+                <h5>Total Books</h5>
+
+                <h1 id="totalBooks">
+                    0
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow text-center h-100">
+
+            <div class="card-body">
+
+                <h5>My Issued Books</h5>
+
+                <h1 id="myBooks">
+                    0
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-primary text-white">
+
+        Available Books
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-hover table-bordered">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Book Name</th>
+
+                    <th>Author</th>
+
+                    <th width="150">
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="bookTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+<script src="{% static 'js/user/dashboard.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base_user.html" %}
+{% load static %}
+
+{% block title %}My Books{% endblock %}
+
+{% block content %}
+
+<div class="row mb-4">
+
+    <div class="col-md-12">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h3>
+
+                    My Issued Books
+
+                </h3>
+
+                <p class="text-muted">
+
+                    Books issued to your account.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+        Issued Books
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Book</th>
+
+                    <th>Author</th>
+
+                    <th>Library</th>
+
+                    <th>Due Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="myBookTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<div class="card shadow border-0">
+
+    <div class="card-header bg-primary text-white">
+        Issued Books
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover mb-0">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Book</th>
+                        <th>Author</th>
+                        <th>Library</th>
+                        <th>Due Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="myBookTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Pagination -->
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+
+            <div>
+                <small
+                    class="text-muted"
+                    id="pageInfo">
+                    Page 1
+                </small>
+            </div>
+
+
+            <nav>
+
+                <ul
+                    class="pagination mb-0"
+                    id="pagination">
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'js/user/my_books.js' %}"></script>
+
+{% endblock %}

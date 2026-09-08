@@ -1,0 +1,82 @@
+
+{% extends "user/user_base.html" %}
+{% load static %}
+
+{% block title %}
+User Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h3 class="mb-4">
+    Dashboard
+</h3>
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>My Profile</h6>
+
+                <h3 id="profileName">
+                    -
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Issued Books</h6>
+
+                <h3 id="issueCount">
+                    0
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Libraries</h6>
+
+                <h3 id="libraryCount">
+                    0
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'js/user/user_dashboard.js' %}"></script>
+
+{% endblock %}
+

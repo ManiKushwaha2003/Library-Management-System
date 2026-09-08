@@ -1,0 +1,43 @@
+
+{% extends "user/user_base.html" %}
+{% load static %}
+
+{% block title %}
+My Issued Books
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-header">
+        <h4>My Issued Books</h4>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Book ID</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+
+            <tbody id="issueTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/user/user_issues.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+
+{% extends "user/user_base.html" %}
+{% load static %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-header">
+        <h4>Library Books</h4>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/user/library_books.js' %}"></script>
+{% endblock %}
+

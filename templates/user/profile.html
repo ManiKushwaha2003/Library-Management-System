@@ -1,0 +1,56 @@
+{% extends "user/user_base.html" %}
+
+{% load static %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+        <h4>My Profile</h4>
+    </div>
+
+    <div class="card-body">
+
+        <p>
+            <b>Username:</b>
+            <span id="username">Loading...</span>
+        </p>
+
+        <p>
+            <b>Email:</b>
+            <span id="email">Loading...</span>
+        </p>
+
+        <p>
+            <b>First Name:</b>
+            <span id="firstName">Loading...</span>
+        </p>
+
+        <p>
+            <b>Last Name:</b>
+            <span id="lastName">Loading...</span>
+        </p>
+
+        <a
+    href="/user-edit-profile/"
+    class="btn btn-primary"
+>
+    Edit Profile
+</a>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'js/user/user_profile.js' %}"></script>
+
+{% endblock %}

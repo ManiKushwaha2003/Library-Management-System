@@ -1,0 +1,136 @@
+{% extends "user_base.html" %}
+
+
+{% block title %}
+
+Library Books
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<h3>
+
+    Library Books
+
+</h3>
+
+
+<div class="row" id="bookList">
+
+
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+
+
+const token=localStorage.getItem("access");
+
+
+const params=new URLSearchParams(
+
+    window.location.search
+
+);
+
+
+const libraryId=params.get("id");
+
+
+loadBooks();
+
+
+async function loadBooks(){
+
+
+    const response=await fetch(
+
+        "/api/library/books/",
+
+        {
+
+            headers:{
+
+                Authorization:`Bearer ${token}`
+
+            }
+
+        }
+
+    );
+
+
+    const data=await response.json();
+
+
+    const books=data.results || data;
+
+
+    const libraryBooks=books.filter(
+
+        book=>book.library==libraryId
+
+    );
+
+
+    libraryBooks.forEach(book=>{
+
+
+        bookList.innerHTML+=`
+
+
+        <div class="col-md-4 mb-3">
+
+
+            <div class="card shadow">
+
+
+                <div class="card-body">
+
+
+                    <h4>
+
+                        ${book.book_name}
+
+                    </h4>
+
+
+                    <p>
+
+                        Author:
+                        ${book.author_name}
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+}
+
+
+</script>
+
+
+{% endblock %}
